@@ -49,81 +49,37 @@ class CalcController {
         return (['+', '-', '*', '/', '%'].indexOf(value) > -1)
     }
 
+    pushOperation(value){
+        this._operation.push(value)
+    }
+
     addOperation(value){
-        // empty vector
-        if (this._operation.length == 0){
-            this._operation.push(value)
-        }
-        else {
-            if (isNaN(value)){
-                if (value = '.'){
-
-                }
-                else {
-                    if ((isNaN(this.getLastOperation()))){
-                        this._operation.pop()
-                        this._operation.push(value)
-                    }
-                    else {
-
-                    }
-                }
-
-            }
-            else {
-
-            }
-          
-          
-          
-            // replace last operation symbol. And Value is not a '.'
-            
-            else {
-                if (!(isNaN(this.getLastOperation())) && (isNaN(value))){
-
-                }
-                else {
-
-                }
-            }
-
-
-
-
-
-            // if (isNaN(this.getLastOperation())){
-                
-
-            // }
-            // else {
-            //     if (){
-            //         // case be .
-            //     }
-            //     else {
-            //         // case be number
-            //         let newValue = this._operation[this._operation.length - 1] + value
-            //         this._operation.pop()
-            //         this._operation.push(newValue)
-            //     }
-            // }
-        }
         
+        if (isNaN(this.getLastOperation())){
+            
+            if (this.isOperator(value)) {
+                this.setLastOperation(value)
 
-        // if (isNaN(this.getLastOperation())){
-
-        //     if(this.isOperator(value)){
-        //         this._operation[this._operation.length - 1] = value
-        //     }
-        //     else {
+            } else if (isNaN(value)) {
+                console.log(value);
                 
-        //     }
-        // }   
-        // else{
-        //     let newValue = this.getLastOperation().toString() + value.toString()            
-        //     this._operation.push(newValue)
-        // }
+            } else {
+                this.pushOperation(parseInt(value))
+            }
 
-        // this._operation.push(value)
+        } else {
+
+            if (this.isOperator(value)) {
+                this.pushOperation(value)
+
+            } else {
+                let newValue = this.getLastOperation() + value
+                this.setLastOperation(parseInt(newValue))
+            }
+        }
+
+        console.log(this._operation);
+        
     }
 
     setError(){
