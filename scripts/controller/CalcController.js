@@ -64,17 +64,6 @@ class CalcController {
         this._locale = value;
     }
 
-    showConsole(){
-
-        console.log(`\nnumero 1: ${this._number1}`);
-        console.log(`numero 2: ${this._number2}`);
-        console.log(`simbolos: ${this._symbols}`);
-        console.log(`Ultimo Numero: ${this._lastNumber}`);
-        console.log(`Ultimo Operador: ${this._lastOperator}`);
-        console.log(`Ultimas entrada: ${this._lastEntry}`);
-
-    }
-
     setDisplayDateTime(){
 
         this.displayTime = this.currentDate.toLocaleTimeString(this.locale);
@@ -156,8 +145,6 @@ class CalcController {
         this._flagNumber = 0;
 
         this.clearDisplay();
-
-        this.showConsole();
         
     }
 
@@ -172,8 +159,6 @@ class CalcController {
         }
 
         this.clearDisplay();
-
-        this.showConsole();
 
     }
 
@@ -194,8 +179,6 @@ class CalcController {
         this._symbols.pop();
         this.displayCalc = this._number1;
 
-        this.showConsole();
-        
     }
 
     //recalc with correctly condition
@@ -205,7 +188,6 @@ class CalcController {
         this._number1 = result.toString();
         this.displayCalc = this._number1;
 
-        this.showConsole();
     }
     
     // check all conditions to calc a value
@@ -269,8 +251,7 @@ class CalcController {
 
             this._flagNumber++;
         }
-
-        this.showConsole();
+        
     }
 
     replacePercent(){
@@ -312,8 +293,6 @@ class CalcController {
                 this._lastEntry = 'n';
             }
         }
-
-        this.showConsole();
     }
 
     execBtn(value){
